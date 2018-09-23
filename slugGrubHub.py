@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from twilio.rest import Client
 
-account_sid = 'AC64601cf2dca0d878855db232a2dfd838'
-auth_token = '2f2e9ec2b20888c42bf4c0ee8273bf39'
+account_sid = 'account_sid'
+auth_token = 'auth_token'
 
 
 C9_C10_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=Colleges+Nine+%26+Ten+Dining+Hall&sName=&naFlag='
@@ -15,9 +15,81 @@ CAR_OAK_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=30&locatio
 url = ''
 favorites = ["Chicken Tenders", "Cheese Pizza"]
 
-choiceMade = False
+
+def autoCheck():
+    favoriteResults = []
+
+    resp = urllib.request.urlopen(url).read()
+
+    soup = BeautifulSoup(resp, 'html.parser')
+
+    table = soup.find('table')
+    myTables = soup.findAll("table", {"cellspacing": 1}) #get the breakfast, lunch, and dinner tables, all with cellspacing: 0
+    x = 0
+    breakfast = []
+    lunch = []
+    dinner = []
+    for table in myTables:
+        myDivs = table.findAll("div", {"class": "menusamprecipes"})
+        
+        for div in myDivs:
+            if x == 0:
+                breakfast.append(div.text)
+            elif x == 1:
+                lunch.append(div.text)
+            elif x == 2:
+                dinner.append(div.text)
+        
+        print(x)
+        x += 1
+            #print(div.text)
+
+    
+    if not breakfast:
+        print("There are no breakfast items today.")
+    else:
+        print("\nThese are the breakfast items:")
+        for meal in breakfast:
+            print(meal)
+    
+    if not lunch:
+        print("There are no lunch items today.")
+    else:
+        print("\nThese are the lunch items:")
+        for meal in lunch:
+            print(meal)
+    
+    if not dinner:
+        print("There are no dinner items today.")
+    else:
+        print("\nThese are the dinner items:")
+        for meal in dinner:
+            print(meal)
+
+    print("Your breakfast favorites on the menu today:")
+    for meal in favorites:
+        if meal in breakfast:
+            favoriteResults.append(meal)
+            print(meal)
+
+
+    print("\nYour lunch favorites on the menu today:")
+    for meal in favorites:
+        if meal in lunch:
+            favoriteResults.append(meal)
+            print(meal)
+
+    print("\nYour dinner favorites on the menu today:")
+    for meal in favorites:
+        if meal in dinner:
+            favoriteResults.append(meal)
+            print(meal)
+
+    return favoriteResults
 
 def manualCheck():
+    favoriteResults = []
+    choiceMade = False
     while choiceMade == False:
         print("Which dining hall would you like check to see if your favorite meals are on the menu?")
         print("1. College 9/10")
@@ -107,18 +179,23 @@ def manualCheck():
         print("Your breakfast favorites on the menu today:")
         for meal in favorites:
             if meal in breakfast:
+                favoriteResults.append(meal)
                 print(meal)
 
 
         print("\nYour lunch favorites on the menu today:")
         for meal in favorites:
             if meal in lunch:
+                favoriteResults.append(meal)
                 print(meal)
 
         print("\nYour dinner favorites on the menu today:")
         for meal in favorites:
             if meal in dinner:
+                favoriteResults.append(meal)
                 print(meal)
+
+        return favoriteResults
 
         
         # print("These are the lunch items:")
@@ -134,9 +211,24 @@ def manualCheck():
 
 
 def sendText(toNumber, message):
+
+
     client = Client(account_sid, auth_token)
     message = client.messages.create(
-        body = message
+        body = message,
         from_ ='+18316071845',
         to = toNumber
     )
+
+foodResults = manualCheck()
+
+foodResultString = ''
+for num, meal in enumerate(foodResults):
+    if num == (len(foodResults) - 1):
+        foodResultString += meal
+    else:
+        foodResultString += meal + ', '
+    
+
+print(foodResultString)
+#sendText(14086211865, "Your favorites on the menu today are: " + foodResultString)
