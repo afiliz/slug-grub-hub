@@ -1,6 +1,6 @@
 # Slug Grub Hub
 
-This project aims to make it easier for UCSC students to know when their favorite foods are available at any dining hall during each week/day. For example, if one really wanted to know when the elusive fried mac and cheese bites were available at college nine/ten's dining hall, they could know which day of the week it would be available and at what time (breakfast, lunch, or dinner).
+This project aims to make it easier for UCSC students to know when their favorite foods are available at any dining hall during each week/day. For example, if one really wanted to know when the elusive fried mac and cheese bites were available at College Nine/Ten's dining hall, they could know which day of the week it would be available and at what time (breakfast, lunch, or dinner).
 
 Initially, Slug Grub Hub will start as a script that can be run on a Rasberry Pi to text a list of users a schedule of their favorite foods at the beginning of the week, and then a text on the day of when their favorite foods are available.
 

@@ -3,6 +3,14 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from twilio.rest import Client
 
+# TODO:
+# - Add documentation
+# - Add scheduling - day and College
+# - add mysql database for phone users
+# - add start and stop subscription for users
+# - add favorite per user
+
+
 account_sid = 'account_sid'
 auth_token = 'auth_token'
 
@@ -14,10 +22,32 @@ PORT_KRES_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=25&locat
 CAR_OAK_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=30&locationName=Rachel+Carson+Oakes+Dining+Hall&sName=&naFlag='
 url = ''
 favorites = ["Chicken Tenders", "Cheese Pizza"]
+URLS = [C9_C10_URL, COW_STEV_URL, CROW_MER_URL, PORT_KRES_URL, CAR_OAK_URL]
+
+C9_C10 = []
+COW_STEV = []
+CROW_MER = []
+PORT_KRES = []
+CAR_OAK = []
 
 
 def autoCheck():
     favoriteResults = []
+
+    #Open all dining hall urls and put the meal names in the breakfast, lunch, and dinner lists
+    
+    for num, diningHall in enumerate(diningHalls):
+        if num == 0:
+            url = URLS[0]    
+        elif num == 1:
+
+        elif num == 2:
+
+        elif num == 3:
+
+        elif num == 4:
+            
+
 
     resp = urllib.request.urlopen(url).read()
 
