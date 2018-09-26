@@ -24,12 +24,55 @@ url = ''
 favorites = ["Chicken Tenders", "Cheese Pizza"]
 URLS = [C9_C10_URL, COW_STEV_URL, CROW_MER_URL, PORT_KRES_URL, CAR_OAK_URL]
 
-C9_C10 = []
-COW_STEV = []
-CROW_MER = []
-PORT_KRES = []
-CAR_OAK = []
+# lists of meals for each dining hall
+# each breakfast, lunch, and dinner list is in one main college dh list
 
+c9_c10_breakfast = []
+c9_c10_lunch = []
+c9_c10_dinner = []
+C9_C10 = [c9_c10_breakfast, c9_c10_lunch, c9_c10_dinner]
+
+cow_stev_breakfast = []
+cow_stev_lunch = []
+cow_stev_dinner = []
+COW_STEV = [cow_stev_breakfast, cow_stev_lunch, cow_stev_dinner]
+
+crow_mer_breakfast = []
+crow_mer_lunch = []
+crow_mer_dinner = []
+CROW_MER = [crow_mer_breakfast, crow_mer_lunch, crow_mer_dinner]
+
+port_kres_breakfast = []
+port_kres_lunch = []
+port_kres_dinner = []
+PORT_KRES = [port_kres_breakfast, port_kres_lunch, port_kres_dinner]
+
+car_oak_breakfast = []
+car_oak_lunch = []
+car_oak_dinner = []
+CAR_OAK = [car_oak_breakfast, car_oak_lunch, car_oak_dinner]
+
+
+def getMeals(url, breakfast, lunch, dinner):
+    url = URLS[0]
+    resp = urllib.request.urlopen(url).read()
+
+    soup = BeautifulSoup(resp, 'html.parser')
+
+    table = soup.find('table')
+    myTables = soup.findAll("table", {"cellspacing": 1}) #get the breakfast, lunch, and dinner tables, all with cellspacing: 0
+    
+    for x, table in enumerate(myTables):
+        myDivs = table.findAll("div", {"class": "menusamprecipes"})
+        
+        for div in myDivs:
+            if x == 0:
+                breakfast.append(div.text)
+            elif x == 1:
+                lunch.append(div.text)
+            elif x == 2:
+                dinner.append(div.text)
+        print("X: " + str(x))
 
 def autoCheck():
     favoriteResults = []
@@ -38,7 +81,8 @@ def autoCheck():
     
     for num, diningHall in enumerate(diningHalls):
         if num == 0:
-            url = URLS[0]    
+            getMeals(URLS[0], c9_c10_breakfast,)
+            
         elif num == 1:
 
         elif num == 2:
@@ -56,9 +100,7 @@ def autoCheck():
     table = soup.find('table')
     myTables = soup.findAll("table", {"cellspacing": 1}) #get the breakfast, lunch, and dinner tables, all with cellspacing: 0
     x = 0
-    breakfast = []
-    lunch = []
-    dinner = []
+    
     for table in myTables:
         myDivs = table.findAll("div", {"class": "menusamprecipes"})
         
