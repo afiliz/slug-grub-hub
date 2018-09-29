@@ -1,20 +1,11 @@
-testArray = []
+import mysql.connector
 
-bacon = ["bacon1", "bacon2"]
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  passwd="yourpassword"
+)
 
-print(testArray)
+mycursor = mydb.cursor()
 
-newBacon = bacon.copy()
-
-testArray.append(newBacon)
-
-print(testArray)
-
-bacon.clear()
-
-print(bacon)
-
-print(testArray)
-print("yay")
-
-mainArray = [list(firstArray), list(secondArray), list(thirdArray)]
+mycursor.execute("CREATE DATABASE mydatabase")

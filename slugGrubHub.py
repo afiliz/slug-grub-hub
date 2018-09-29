@@ -24,6 +24,11 @@ url = ''
 favorites = ["Chicken Tenders", "Cheese Pizza"]
 URLS = [C9_C10_URL, COW_STEV_URL, CROW_MER_URL, PORT_KRES_URL, CAR_OAK_URL]
 
+#all breakfast, lunch, and dinner meals will be in these lists
+breakfast = []
+lunch = []
+dinner = []
+
 # lists of meals for each dining hall
 # each breakfast, lunch, and dinner list is in one main college dh list
 
@@ -52,6 +57,9 @@ car_oak_lunch = []
 car_oak_dinner = []
 CAR_OAK = [car_oak_breakfast, car_oak_lunch, car_oak_dinner]
 
+# list of all the individual dining hall lists
+# lot of lists huh? gonna try to find a solution to them in the future. Dictionary data structure doesn't seem too promising
+diningHalls = [C9_C10, COW_STEV, CROW_MER, PORT_KRES, CAR_OAK]
 
 def getMeals(url, breakfast, lunch, dinner):
     url = URLS[0]
@@ -74,90 +82,29 @@ def getMeals(url, breakfast, lunch, dinner):
                 dinner.append(div.text)
         print("X: " + str(x))
 
+# def autoCheck():
+#     favoriteResults = []
+
+#     #Open all dining hall urls and put the meal names in the breakfast, lunch, and dinner lists
+    
+#     for num, diningHall in enumerate(diningHalls):
+#         if num == 0:
+#             getMeals(URLS[0], c9_c10_breakfast, c9_c10_lunch, c9_c10_dinner)
+
+#         elif num == 1:
+
 def autoCheck():
     favoriteResults = []
 
-    #Open all dining hall urls and put the meal names in the breakfast, lunch, and dinner lists
+    getMeals(URLS[0], c9_c10_breakfast, c9_c10_lunch, c9_c10_dinner)
+    getMeals(URLS[1], cow_stev_breakfast, cow_stev_lunch, cow_stev_dinner)
+    getMeals(URLS[2], crow_mer_breakfast, crow_mer_lunch, crow_mer_dinner)
+    getMeals(URLS[3], port_kres_breakfast, port_kres_lunch, port_kres_dinner)
+    getMeals(URLS[4], car_oak_breakfast, car_oak_lunch, car_oak_dinner)
     
-    for num, diningHall in enumerate(diningHalls):
-        if num == 0:
-            getMeals(URLS[0], c9_c10_breakfast,)
-            
-        elif num == 1:
-
-        elif num == 2:
-
-        elif num == 3:
-
-        elif num == 4:
-            
-
-
-    resp = urllib.request.urlopen(url).read()
-
-    soup = BeautifulSoup(resp, 'html.parser')
-
-    table = soup.find('table')
-    myTables = soup.findAll("table", {"cellspacing": 1}) #get the breakfast, lunch, and dinner tables, all with cellspacing: 0
-    x = 0
     
-    for table in myTables:
-        myDivs = table.findAll("div", {"class": "menusamprecipes"})
-        
-        for div in myDivs:
-            if x == 0:
-                breakfast.append(div.text)
-            elif x == 1:
-                lunch.append(div.text)
-            elif x == 2:
-                dinner.append(div.text)
-        
-        print(x)
-        x += 1
-            #print(div.text)
-
     
-    if not breakfast:
-        print("There are no breakfast items today.")
-    else:
-        print("\nThese are the breakfast items:")
-        for meal in breakfast:
-            print(meal)
     
-    if not lunch:
-        print("There are no lunch items today.")
-    else:
-        print("\nThese are the lunch items:")
-        for meal in lunch:
-            print(meal)
-    
-    if not dinner:
-        print("There are no dinner items today.")
-    else:
-        print("\nThese are the dinner items:")
-        for meal in dinner:
-            print(meal)
-
-    print("Your breakfast favorites on the menu today:")
-    for meal in favorites:
-        if meal in breakfast:
-            favoriteResults.append(meal)
-            print(meal)
-
-
-    print("\nYour lunch favorites on the menu today:")
-    for meal in favorites:
-        if meal in lunch:
-            favoriteResults.append(meal)
-            print(meal)
-
-    print("\nYour dinner favorites on the menu today:")
-    for meal in favorites:
-        if meal in dinner:
-            favoriteResults.append(meal)
-            print(meal)
-
-    return favoriteResults
 
 def manualCheck():
     favoriteResults = []
