@@ -2,10 +2,28 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="yourusername",
-  passwd="yourpassword"
+  user="root",
+  passwd="MySQL0l09802",
+  database="sluggrubhub"
 )
 
 mycursor = mydb.cursor()
 
-mycursor.execute("CREATE DATABASE mydatabase")
+mycursor.execute("SHOW TABLES")
+
+for x in mycursor:
+  print(x)
+
+# for x in mycursor:
+#   print(x) 
+
+# import datetime
+
+
+# currentDate = datetime.datetime.now()
+# plusOne = currentDate + datetime.timedelta(days = 2)
+
+# print(currentDate)
+# print(plusOne)
+
+
