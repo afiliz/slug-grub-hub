@@ -2,6 +2,8 @@ import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
 from twilio.rest import Client
+import datetime
+
 
 # TODO:
 # - Add documentation
@@ -11,8 +13,45 @@ from twilio.rest import Client
 # - add favorite per user
 
 
+currentDate = datetime.datetime.now()
+plusOneDate = currentDate + datetime.timedelta(days = 1)
+plusTwoDate = currentDate + datetime.timedelta(days = 2)
+plusThreeDate = currentDate + datetime.timedelta(days = 3)
+plusFourDate = currentDate + datetime.timedelta(days = 4)
+plusFiveDate = currentDate + datetime.timedelta(days = 5)
+plusSixDate = currentDate + datetime.timedelta(days = 6)
+plusSevenDate = currentDate + datetime.timedelta(days = 7)
+
+
+
 account_sid = 'account_sid'
 auth_token = 'auth_token'
+
+plusTwo = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusOneDate.month) + '%2F' + str(plusOneDate.day) + '%2F' + str(plusOneDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag='
+
+
+
+# groundwork for having 
+C9_C10_URLS = ['https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(currentDate.month) + '%2F' + str(currentDate.day) + '%2F' + str(currentDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag=', 
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusOneDate.month) + '%2F' + str(plusOneDate.day) + '%2F' + str(plusOneDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusTwoDate.month) + '%2F' + str(plusTwoDate.day) + '%2F' + str(plusTwoDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusThreeDate.month) + '%2F' + str(plusThreeDate.day) + '%2F' + str(plusThreeDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusFourDate.month) + '%2F' + str(plusFourDate.day) + '%2F' + str(plusFourDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusFiveDate.month) + '%2F' + str(plusFiveDate.day) + '%2F' + str(plusFiveDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusSixDate.month) + '%2F' + str(plusSixDate.day) + '%2F' + str(plusSixDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusSevenDate.month) + '%2F' + str(plusSevenDate.day) + '%2F' + str(plusSevenDate.year) + '&locationNum=40&locationName=%20Colleges+Nine+%26+Ten+Dining+Hall&naFlag='
+]
+
+COW_STEV_URLS = ['https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(currentDate.month) + '%2F' + str(currentDate.day) + '%2F' + str(currentDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=', 
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusOneDate.month) + '%2F' + str(plusOneDate.day) + '%2F' + str(plusOneDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusTwoDate.month) + '%2F' + str(plusTwoDate.day) + '%2F' + str(plusTwoDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusThreeDate.month) + '%2F' + str(plusThreeDate.day) + '%2F' + str(plusThreeDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusFourDate.month) + '%2F' + str(plusFourDate.day) + '%2F' + str(plusFourDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusFiveDate.month) + '%2F' + str(plusFiveDate.day) + '%2F' + str(plusFiveDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusSixDate.month) + '%2F' + str(plusSixDate.day) + '%2F' + str(plusSixDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag=',
+               'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusSevenDate.month) + '%2F' + str(plusSevenDate.day) + '%2F' + str(plusSevenDate.year) + '&locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&naFlag='
+]
+
 
 
 C9_C10_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=Colleges+Nine+%26+Ten+Dining+Hall&sName=&naFlag='
@@ -32,14 +71,40 @@ dinner = []
 # lists of meals for each dining hall
 # each breakfast, lunch, and dinner list is in one main college dh list
 
-c9_c10_breakfast = []
-c9_c10_lunch = []
-c9_c10_dinner = []
+c9_c10_breakfast = {}
+c9_c10_lunch = {}
+c9_c10_dinner = {}
 C9_C10 = [c9_c10_breakfast, c9_c10_lunch, c9_c10_dinner]
 
-cow_stev_breakfast = []
-cow_stev_lunch = []
-cow_stev_dinner = []
+c9_c10_breakfast["current"] = []
+c9_c10_breakfast["plusOne"] = []
+c9_c10_breakfast["plusTwo"] = []
+c9_c10_breakfast["plusThree"] = []
+c9_c10_breakfast["plusFour"] = []
+c9_c10_breakfast["plusFive"] = []
+c9_c10_breakfast["plusSix"] = []
+c9_c10_breakfast["plusSeven"] = []
+c9_c10_lunch["current"] = []
+c9_c10_lunch["plusOne"] = []
+c9_c10_lunch["plusTwo"] = []
+c9_c10_lunch["plusThree"] = []
+c9_c10_lunch["plusFour"] = []
+c9_c10_lunch["plusFive"] = []
+c9_c10_lunch["plusSix"] = []
+c9_c10_lunch["plusSeven"] = []
+c9_c10_dinner["current"] = []
+c9_c10_dinner["plusOne"] = []
+c9_c10_dinner["plusTwo"] = []
+c9_c10_dinner["plusThree"] = []
+c9_c10_dinner["plusFour"] = []
+c9_c10_dinner["plusFive"] = []
+c9_c10_dinner["plusSix"] = []
+c9_c10_dinner["plusSeven"] = []
+
+
+cow_stev_breakfast = {}
+cow_stev_lunch = {}
+cow_stev_dinner = {}
 COW_STEV = [cow_stev_breakfast, cow_stev_lunch, cow_stev_dinner]
 
 crow_mer_breakfast = []
@@ -56,13 +121,14 @@ car_oak_breakfast = []
 car_oak_lunch = []
 car_oak_dinner = []
 CAR_OAK = [car_oak_breakfast, car_oak_lunch, car_oak_dinner]
+    
 
 # list of all the individual dining hall lists
 # lot of lists huh? gonna try to find a solution to them in the future. Dictionary data structure doesn't seem too promising
 diningHalls = [C9_C10, COW_STEV, CROW_MER, PORT_KRES, CAR_OAK]
 
+
 def getMeals(url, breakfast, lunch, dinner):
-    url = URLS[0]
     resp = urllib.request.urlopen(url).read()
 
     soup = BeautifulSoup(resp, 'html.parser')
@@ -80,7 +146,7 @@ def getMeals(url, breakfast, lunch, dinner):
                 lunch.append(div.text)
             elif x == 2:
                 dinner.append(div.text)
-        print("X: " + str(x))
+        # print("X: " + str(x))
 
 # def autoCheck():
 #     favoriteResults = []
@@ -93,9 +159,7 @@ def getMeals(url, breakfast, lunch, dinner):
 
 #         elif num == 1:
 
-def autoCheck():
-    favoriteResults = []
-
+def getAllMeals():
     getMeals(URLS[0], c9_c10_breakfast, c9_c10_lunch, c9_c10_dinner)
     getMeals(URLS[1], cow_stev_breakfast, cow_stev_lunch, cow_stev_dinner)
     getMeals(URLS[2], crow_mer_breakfast, crow_mer_lunch, crow_mer_dinner)
@@ -239,15 +303,27 @@ def sendText(toNumber, message):
         to = toNumber
     )
 
-foodResults = manualCheck()
 
-foodResultString = ''
-for num, meal in enumerate(foodResults):
-    if num == (len(foodResults) - 1):
-        foodResultString += meal
-    else:
-        foodResultString += meal + ', '
+# getAllMeals()
+getMeals(C9_C10_URLS[2], c9_c10_breakfast["plusOne"], c9_c10_lunch["plusOne"], c9_c10_dinner["plusOne"])
+
+
+
+print(c9_c10_breakfast["plusOne"])
+print(c9_c10_lunch["plusOne"])
+print(c9_c10_dinner["plusOne"])
+print(plusTwo)
+
+
+# foodResults = manualCheck()
+
+# foodResultString = ''
+# for num, meal in enumerate(foodResults):
+#     if num == (len(foodResults) - 1):
+#         foodResultString += meal
+#     else:
+#         foodResultString += meal + ', '
     
 
-print(foodResultString)
+# print(foodResultString)
 #sendText(14086211865, "Your favorites on the menu today are: " + foodResultString)

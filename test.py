@@ -1,18 +1,25 @@
 import mysql.connector
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  passwd="MySQL0l09802",
-  database="sluggrubhub"
-)
+test = {}
+test["yeet"] = []
+test["yeet"].append("yeeeeet")
 
-mycursor = mydb.cursor()
 
-mycursor.execute("SHOW TABLES")
+print(test["yeet"])
 
-for x in mycursor:
-  print(x)
+# mydb = mysql.connector.connect(
+#   host="localhost",
+#   user="root",
+#   passwd="MySQL0l09802",
+#   database="sluggrubhub"
+# )
+
+# mycursor = mydb.cursor()
+
+# mycursor.execute("SHOW TABLES")
+
+# for x in mycursor:
+#   print(x)
 
 # for x in mycursor:
 #   print(x) 
