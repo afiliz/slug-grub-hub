@@ -62,17 +62,21 @@ CAR_OAK_URLS = ['https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=
                'https://nutrition.sa.ucsc.edu/menuSamp.asp?myaction=read&sName=&dtdate=' + str(plusSevenDate.month) + '%2F' + str(plusSevenDate.day) + '%2F' + str(plusSevenDate.year) + '&locationNum=30&locationName=Rachel+Carson+Oakes+Dining+Hall&naFlag='
 ]
 
+
+
 # plusTwo = CROW_MER_URLS[7]
 
 # (Unused) Current date urls, doesn't utilize the datetime library
-C9_C10_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=Colleges+Nine+%26+Ten+Dining+Hall&sName=&naFlag='
-COW_STEV_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&sName=&naFlag='
-CROW_MER_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=20&locationName=Crown+Merrill+Dining+Hall&sName=&naFlag='
-PORT_KRES_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=25&locationName=Porter+Kresge+Dining+Hall&sName=&naFlag='
-CAR_OAK_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=30&locationName=Rachel+Carson+Oakes+Dining+Hall&sName=&naFlag='
+# C9_C10_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=40&locationName=Colleges+Nine+%26+Ten+Dining+Hall&sName=&naFlag='
+# COW_STEV_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=05&locationName=Cowell+Stevenson+Dining+Hall&sName=&naFlag='
+# CROW_MER_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=20&locationName=Crown+Merrill+Dining+Hall&sName=&naFlag='
+# PORT_KRES_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=25&locationName=Porter+Kresge+Dining+Hall&sName=&naFlag='
+# CAR_OAK_URL = 'https://nutrition.sa.ucsc.edu/menuSamp.asp?locationNum=30&locationName=Rachel+Carson+Oakes+Dining+Hall&sName=&naFlag='
+# URLS =[C9_C10_URL, COW_STEV_URL, CROW_MER_URL, PORT_KRES_URL, CAR_OAK_URL]
+
 url = ''
 favorites = ["Chicken Tenders", "Cheese Pizza"]
-URLS = [C9_C10_URL, COW_STEV_URL, CROW_MER_URL, PORT_KRES_URL, CAR_OAK_URL]
+URLS = [C9_C10_URLS, COW_STEV_URLS, CROW_MER_URLS, PORT_KRES_URLS, CAR_OAK_URLS]
 
 #all breakfast, lunch, and dinner meals will be in these lists
 breakfast = []
@@ -85,7 +89,7 @@ c9_c10_breakfast = {}
 c9_c10_lunch = {}
 c9_c10_dinner = {}
 c9_c10_lateNight = {}
-C9_C10 = [c9_c10_breakfast, c9_c10_lunch, c9_c10_dinner]
+C9_C10 = [c9_c10_breakfast, c9_c10_lunch, c9_c10_dinner, c9_c10_lateNight]
 c9_c10_breakfast["current"] = []
 c9_c10_breakfast["plusOne"] = []
 c9_c10_breakfast["plusTwo"] = []
@@ -123,7 +127,7 @@ cow_stev_breakfast = {}
 cow_stev_lunch = {}
 cow_stev_dinner = {}
 cow_stev_lateNight = {}
-COW_STEV = [cow_stev_breakfast, cow_stev_lunch, cow_stev_dinner]
+COW_STEV = [cow_stev_breakfast, cow_stev_lunch, cow_stev_dinner, cow_stev_lateNight]
 cow_stev_breakfast["current"] = []
 cow_stev_breakfast["plusOne"] = []
 cow_stev_breakfast["plusTwo"] = []
@@ -160,7 +164,8 @@ cow_stev_lateNight["plusSeven"] = []
 crow_mer_breakfast = {}
 crow_mer_lunch = {}
 crow_mer_dinner = {}
-CROW_MER = [crow_mer_breakfast, crow_mer_lunch, crow_mer_dinner]
+crow_mer_lateNight = {}
+CROW_MER = [crow_mer_breakfast, crow_mer_lunch, crow_mer_dinner, crow_mer_lateNight]
 crow_mer_breakfast["current"] = []
 crow_mer_breakfast["plusOne"] = []
 crow_mer_breakfast["plusTwo"] = []
@@ -185,11 +190,20 @@ crow_mer_dinner["plusFour"] = []
 crow_mer_dinner["plusFive"] = []
 crow_mer_dinner["plusSix"] = []
 crow_mer_dinner["plusSeven"] = []
+crow_mer_lateNight["current"] = []
+crow_mer_lateNight["plusOne"] = []
+crow_mer_lateNight["plusTwo"] = []
+crow_mer_lateNight["plusThree"] = []
+crow_mer_lateNight["plusFour"] = []
+crow_mer_lateNight["plusFive"] = []
+crow_mer_lateNight["plusSix"] = []
+crow_mer_lateNight["plusSeven"] = []
 
 port_kres_breakfast = {}
 port_kres_lunch = {}
 port_kres_dinner = {}
-PORT_KRES = [port_kres_breakfast, port_kres_lunch, port_kres_dinner]
+port_kres_lateNight = {}
+PORT_KRES = [port_kres_breakfast, port_kres_lunch, port_kres_dinner, port_kres_lateNight]
 port_kres_breakfast["current"] = []
 port_kres_breakfast["plusOne"] = []
 port_kres_breakfast["plusTwo"] = []
@@ -214,12 +228,20 @@ port_kres_dinner["plusFour"] = []
 port_kres_dinner["plusFive"] = []
 port_kres_dinner["plusSix"] = []
 port_kres_dinner["plusSeven"] = []
+port_kres_lateNight["current"] = []
+port_kres_lateNight["plusOne"] = []
+port_kres_lateNight["plusTwo"] = []
+port_kres_lateNight["plusThree"] = []
+port_kres_lateNight["plusFour"] = []
+port_kres_lateNight["plusFive"] = []
+port_kres_lateNight["plusSix"] = []
+port_kres_lateNight["plusSeven"] = []
 
 car_oak_breakfast = {}
 car_oak_lunch = {}
 car_oak_dinner = {}
 car_oak_lateNight = {}
-CAR_OAK = [car_oak_breakfast, car_oak_lunch, car_oak_dinner]
+CAR_OAK = [car_oak_breakfast, car_oak_lunch, car_oak_dinner, car_oak_lateNight]
 car_oak_breakfast["current"] = []
 car_oak_breakfast["plusOne"] = []
 car_oak_breakfast["plusTwo"] = []
@@ -253,8 +275,5 @@ car_oak_lateNight["plusFive"] = []
 car_oak_lateNight["plusSix"] = []
 car_oak_lateNight["plusSeven"] = []
 
-filler = {}
-
-# list of all the individual dining hall lists
-# lot of lists huh? gonna try to find a solution to them in the future. Dictionary data structure doesn't seem too promising
+# list of all the individual dining hall dictionaries
 diningHalls = [C9_C10, COW_STEV, CROW_MER, PORT_KRES, CAR_OAK]

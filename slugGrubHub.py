@@ -1,7 +1,7 @@
-from twilio.rest import Client
 import datetime
 from sghURLS import *
 from sghMeals import *
+from sghText import sendText
 
 # TODO: see if moving dictionaries to database would be better
 # TODO:
@@ -10,9 +10,6 @@ from sghMeals import *
 # - add mysql database for phone users
 # - add start and stop subscription for users
 # - add favorite per user
-
-account_sid = 'account_sid'
-auth_token = 'auth_token'
 
 def updateDates():
     global currentDate, plusOneDate, plusTwoDate, plusThreeDate, plusFourDate, plusFiveDate, plusSixDate, plusSevenDate 
@@ -25,22 +22,38 @@ def updateDates():
     plusSixDate = currentDate + datetime.timedelta(days = 6)
     plusSevenDate = currentDate + datetime.timedelta(days = 7)
 
-def sendText(toNumber, message):
-    client = Client(account_sid, auth_token)
-    message = client.messages.create(
-        body = message,
-        from_ ='+18316071845',
-        to = toNumber
-    )
+# updateAllMeals()
 
-# getAllMeals()
-getMeals(C9_C10_URLS[4], c9_c10_breakfast["current"], c9_c10_lunch["current"], c9_c10_dinner["current"], c9_c10_lateNight["current"])
+sendText(14086211865, "Test texterino")
 
-print(c9_c10_breakfast["current"])
-print(c9_c10_lunch["current"])
-print(c9_c10_dinner["current"])
-print(c9_c10_lateNight["current"])
-print(C9_C10_URLS[4])
+# for x in range(0, 8):
+#     print(x)
+# # getMeals(C9_C10_URLS[4], c9_c10_breakfast["current"], c9_c10_lunch["current"], c9_c10_dinner["current"], c9_c10_lateNight["current"])
 
-# Special thanks to Mom for the "Hub" part of the Slug Grub Hub name
+
+
+# print(c9_c10_breakfast["plusThree"])
+# print(c9_c10_lunch["plusThree"])
+# print(c9_c10_dinner["plusThree"])
+# print(c9_c10_lateNight["plusThree"])
+# print(C9_C10_URLS[3])
+
+# print(port_kres_breakfast["plusFour"])
+# print(port_kres_lunch["plusFour"])
+# print(port_kres_dinner["plusFour"])
+# print(port_kres_lateNight["plusFour"])
+# print(PORT_KRES_URLS[4])
+
+# print(cow_stev_breakfast["plusSeven"])
+# print(cow_stev_lunch["plusSeven"])
+# print(cow_stev_dinner["plusSeven"])
+# print(cow_stev_lateNight["plusSeven"])
+# print(COW_STEV_URLS[7])
+
+
+
+# print(C9_C10_URLS[4])
+# print(URLS)
+
+# Special thanks to Mom for the "Hub" part of the Slug Grub Hub name (even though I realized Grub Hub was a thing after I created the repo)
 # Also special thanks to some of my friends for helping beta test Slug Grub Hub
