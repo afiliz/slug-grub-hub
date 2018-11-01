@@ -1,7 +1,8 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
-from sghURLS import *
+import pickle
+from sghData import *
 
 def getMeals(url, breakfast, lunch, dinner, latenight):
     resp = urllib.request.urlopen(url).read()
@@ -53,6 +54,15 @@ def updateAllMeals():
     for x, urlList in enumerate(URLS):
         getDiningHallMeals(urlList, diningHalls[x][0], diningHalls[x][1], diningHalls[x][2], diningHalls[x][3])
         
+
+# to implement
+# def pickleAllMeals():
+#     with open(newfile, 'wb') as fi:
+#         # dump your data into the file
+#         pickle.dump(diningHalls, fi)
+
+
+
 
     # getMeals(C9_C10_URLS[0], c9_c10_breakfast["current"], c9_c10_lunch["current"], c9_c10_dinner["current"], c9_c10_lateNight["current"])
     # getMeals(C9_C10_URLS[0], c9_c10_breakfast["plusOne"], c9_c10_lunch["plusOne"], c9_c10_dinner["plusOne"], c9_c10_lateNight["plusOne"])

@@ -1,5 +1,5 @@
 import datetime
-from sghURLS import *
+from sghData import *
 from sghMeals import *
 from sghText import sendText
 
@@ -22,9 +22,9 @@ def updateDates():
     plusSixDate = currentDate + datetime.timedelta(days = 6)
     plusSevenDate = currentDate + datetime.timedelta(days = 7)
 
-# updateAllMeals()
+updateAllMeals()
 
-sendText(14086211865, "Test texterino")
+# sendText(14086211865, "Test texterino")
 
 # for x in range(0, 8):
 #     print(x)
@@ -32,23 +32,23 @@ sendText(14086211865, "Test texterino")
 
 
 
-# print(c9_c10_breakfast["plusThree"])
-# print(c9_c10_lunch["plusThree"])
-# print(c9_c10_dinner["plusThree"])
-# print(c9_c10_lateNight["plusThree"])
-# print(C9_C10_URLS[3])
+print(c9_c10_breakfast["plusThree"])
+print(c9_c10_lunch["plusThree"])
+print(c9_c10_dinner["plusThree"])
+print(c9_c10_lateNight["plusThree"])
+print(C9_C10_URLS[3])
 
-# print(port_kres_breakfast["plusFour"])
-# print(port_kres_lunch["plusFour"])
-# print(port_kres_dinner["plusFour"])
-# print(port_kres_lateNight["plusFour"])
-# print(PORT_KRES_URLS[4])
+print(port_kres_breakfast["plusFour"])
+print(port_kres_lunch["plusFour"])
+print(port_kres_dinner["plusFour"])
+print(port_kres_lateNight["plusFour"])
+print(PORT_KRES_URLS[4])
 
-# print(cow_stev_breakfast["plusSeven"])
-# print(cow_stev_lunch["plusSeven"])
-# print(cow_stev_dinner["plusSeven"])
-# print(cow_stev_lateNight["plusSeven"])
-# print(COW_STEV_URLS[7])
+print(cow_stev_breakfast["plusSeven"])
+print(cow_stev_lunch["plusSeven"])
+print(cow_stev_dinner["plusSeven"])
+print(cow_stev_lateNight["plusSeven"])
+print(COW_STEV_URLS[7])
 
 
 
