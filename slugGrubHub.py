@@ -59,7 +59,6 @@ result = getMealsCheckString(meals, dhs, "current")
 
 print(result)
 
-sendText(14086211865, result)
 # #times = checkMealInDH("Steamed Rice", 1, "plusSeven")
 # result = checkAllMealsInDH(meals, 1, "plusSeven")
 # print(result)
