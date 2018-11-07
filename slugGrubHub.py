@@ -32,25 +32,37 @@ updateAllMeals()
 
 
 
-print(c9_c10_breakfast["plusThree"])
-print(c9_c10_lunch["plusThree"])
-print(c9_c10_dinner["plusThree"])
-print(c9_c10_lateNight["plusThree"])
-print(C9_C10_URLS[3])
+print(c9_c10_breakfast["current"])
+print(c9_c10_lunch["current"])
+print(c9_c10_dinner["current"])
+print(c9_c10_lateNight["current"])
+print(C9_C10_URLS[0])
 
-print(port_kres_breakfast["plusFour"])
-print(port_kres_lunch["plusFour"])
-print(port_kres_dinner["plusFour"])
-print(port_kres_lateNight["plusFour"])
-print(PORT_KRES_URLS[4])
+print(cow_stev_breakfast["current"])
+print(cow_stev_lunch["current"])
+print(cow_stev_dinner["current"])
+print(cow_stev_lateNight["current"])
+print(COW_STEV_URLS[0])
 
-print(cow_stev_breakfast["plusSeven"])
-print(cow_stev_lunch["plusSeven"])
-print(cow_stev_dinner["plusSeven"])
-print(cow_stev_lateNight["plusSeven"])
-print(COW_STEV_URLS[7])
+print(port_kres_breakfast["current"])
+print(port_kres_lunch["current"])
+print(port_kres_dinner["current"])
+print(port_kres_lateNight["current"])
+print(PORT_KRES_URLS[0])
 
 
+
+meals = ["Belgian Waffles", "Cage Free Scrambled Eggs", "Cheese Pizza", "BBQ Wings"]
+dhs = [0, 1, 3]
+
+result = getMealsCheckString(meals, dhs, "current")
+
+print(result)
+
+sendText(14086211865, result)
+# #times = checkMealInDH("Steamed Rice", 1, "plusSeven")
+# result = checkAllMealsInDH(meals, 1, "plusSeven")
+# print(result)
 
 # print(C9_C10_URLS[4])
 # print(URLS)
