@@ -1,7 +1,7 @@
 import datetime
 import os
 from sghData import *
-from sghMeals import *
+from sghMeals import updateAllMeals, generateMealsCheckString
 from sghText import sendText
 
 # TODO: see if moving dictionaries to database would be better
@@ -59,7 +59,7 @@ dhs = [0, 1, 3]
 result = generateMealsCheckString(meals, dhs, "current")
 
 print(result)
-sendText(os.environ.get('PERSONAL_NUMBER'), result)
+# sendText(os.environ.get('PERSONAL_NUMBER'), result)
 # #times = checkMealInDH("Steamed Rice", 1, "plusSeven")
 # result = checkAllMealsInDH(meals, 1, "plusSeven")
 # print(result)

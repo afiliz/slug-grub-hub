@@ -1,5 +1,6 @@
 import mysql.connector
 
+# create connection to db and create cursor object
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -7,10 +8,9 @@ mydb = mysql.connector.connect(
   database="sgh"
 )
 
-
-
 mycursor = mydb.cursor()
 
+# gets the food string of given user
 def getUserFoodString(number):
     sql = "SELECT foods FROM users WHERE number = %s"
     mycursor.execute(sql, (number,))
@@ -19,6 +19,7 @@ def getUserFoodString(number):
     for result in myresult:
         return result
 
+# gets the dining hall string of given user
 def getUserDiningHallsString(number):
     sql = "SELECT diningHalls FROM users WHERE number = %s"
     mycursor.execute(sql, (number,))
@@ -27,16 +28,19 @@ def getUserDiningHallsString(number):
     for result in myresult:
         return result
 
+# updates the user's food string to inputted string
 def updateUserFoods(foodString, number):
     sql = "UPDATE users SET foods = %s WHERE number = %s"
     mycursor.execute(sql, (foodString, number,))
     mydb.commit()
 
+# updates the user's dining hall string to inputted string
 def updateUserDiningHalls(dhString, number):
     sql = "UPDATE users SET diningHalls = %s WHERE number = %s"
     mycursor.execute(sql, (dhString, number,))
     mydb.commit()
 
+# prints out the user table
 def printUsersTable():
     sql = "SELECT * FROM users"
     mycursor.execute(sql)
@@ -46,69 +50,56 @@ def printUsersTable():
     for results in myresult:
         print(results)
 
-def addFoodToUser(foodString, foodToAdd):
+# converts an entry string (separated by ',') into an array
+def getEntryArray(entryString):
+    entryArr = entryString.split(',')
+    del entryArr[-1]
+    return entryArr
+
+# adds a new entry to a string separated by ','
+def addEntryToUserString(entryString, entryToAdd):
     # create array out of input string and delete last element
     # last element is created since there is a ',' at end of string
-    foodArr = foodString.split(',')
-    del foodArr[-1]
+    entryArr = entryString.split(',')
+    del entryArr[-1]
 
     # re-add ',' to all elements in array, then create the entry to add to array
-    for i, food in enumerate(foodArr):
-        newFood = foodArr[i] + ','
-        foodArr[i] = newFood
-    addition = foodToAdd + ','
+    for i, entry in enumerate(entryArr):
+        newentry = entryArr[i] + ','
+        entryArr[i] = newentry
+    addition = entryToAdd + ','
 
-    # add the new food entry to array and return array as string
-    foodArr.append(addition)
-    return ''.join(foodArr)
+    # add the new entry entry to array and return array as string
+    entryArr.append(addition)
+    return ''.join(entryArr)
 
+# adds a food entry to a given user's food string
+def addFoodToUser(entryToAdd, number):
+    foodString = getUserFoodString(number)
 
-# updateUserFoods("Allergen Free Chicken Thigh,Cheese Pizza", "+16666666666")
+    newFoodString = addEntryToUserString(foodString, entryToAdd)
 
-# updateUserDiningHalls("c9c10", "+16666666666")
+    updateUserFoods(newFoodString, number)
 
-# printUsersTable()
+# adds a dh entry to a given user's dh string
+def addDHToUser(entryToAdd, number):
+    dhString = getUserDiningHallsString(number)
 
-# print(getUserFoodString("+16666666666"))
+    newDHString = addEntryToUserString(dhString, entryToAdd)
 
-foodString = "test,test2,"
+    updateUserDiningHalls(newDHString, number)
 
-print(addFoodToUser(foodString, "test3"))
-# mycursor.execute("SELECT * FROM users LIMIT 2")
-
-# myresult = mycursor.fetchall()
-
-# for result in myresult:
-#     print(myresult)
-
-
-# insert user
-
-# sqlFormula = "INSERT INTO users (name, number, diningHalls, foods) VALUES (%s, %s, %s, %s)"
-# users = [("Adam", "+16666666666", "910,CowellStevenson", "BBQ Pork Ribs,Chicken Tenders"),
-#         ("Test User", "+17777777777", "PorterKresge,CarsonOakes", "BBQ Pork Ribs,Cheese Pizza")]
-
-# mycursor.executemany(sqlFormula, users)
-
-
-
-
-# query for elements with particular values
-
-# sql = "SELECT * FROM users WHERE name = %s"
-
-# mycursor.execute(sql, ("Adam", ))
-
-# myresult = mycursor.fetchall()
-
-# for row in myresult:
-#     print(row)
+# initializes a new user given their name and number
+def createNewUser(name, number):
+    sqlFormula = "INSERT INTO users (name, number, diningHalls, foods) VALUES (%s, %s, %s, %s)"
+    newUser = (name, number, "", "")
+    mycursor.execute(sqlFormula, newUser)
+    mydb.commit()
 
 
 # create table
 
 # mycursor.execute("CREATE TABLE users (name VARCHAR(255), number VARCHAR(255), diningHalls JSON, foods JSON)")
-
 
 
 # tried to use JSON arrays
