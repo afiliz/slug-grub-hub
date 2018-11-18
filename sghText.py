@@ -1,12 +1,13 @@
 from twilio.rest import Client
+import os
 
-account_sid = 'ACe363635a022a5e400703021bcfe99272'
-auth_token = '3ec886b86657c33be81b1bf1a042512b'
+account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
+auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
 
 def sendText(toNumber, message):
     client = Client(account_sid, auth_token)
     message = client.messages.create(
         body = message,
-        from_ ='+14805317720',
+        from_ = os.environ.get('TWILIO_SGH_NUMBER'),
         to = toNumber
     )

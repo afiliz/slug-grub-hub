@@ -1,4 +1,5 @@
 import datetime
+import os
 from sghData import *
 from sghMeals import *
 from sghText import sendText
@@ -55,17 +56,17 @@ print(PORT_KRES_URLS[0])
 meals = ["Belgian Waffles", "Cage Free Scrambled Eggs", "Cheese Pizza", "BBQ Wings"]
 dhs = [0, 1, 3]
 
-result = getMealsCheckString(meals, dhs, "current")
+result = generateMealsCheckString(meals, dhs, "current")
 
 print(result)
-
-sendText(14086211865, result)
+sendText(os.environ.get('PERSONAL_NUMBER'), result)
 # #times = checkMealInDH("Steamed Rice", 1, "plusSeven")
 # result = checkAllMealsInDH(meals, 1, "plusSeven")
 # print(result)
 
 # print(C9_C10_URLS[4])
 # print(URLS)
+
 
 # Special thanks to Mom for the "Hub" part of the Slug Grub Hub name (even though I realized Grub Hub was a thing after I created the repo)
 # Also special thanks to some of my friends for helping beta test Slug Grub Hub

@@ -122,7 +122,7 @@ def turnTupleIntoString(tuple):
         # print("added latenight")
 
 
-def getMealsCheckString(meals, dhs, plusWeekDay):
+def generateMealsCheckString(meals, dhs, plusWeekDay):
     breakfastString = "Breakfast:\n"
     lunchString = "Lunch:\n"
     dinnerString = "Dinner:\n"
