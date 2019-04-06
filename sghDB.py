@@ -97,6 +97,60 @@ def createNewUser(name, number):
     mydb.commit()
 
 
+# deletes a user entry given a number
+def deleteUser(number):
+    sql = "DELETE FROM users WHERE number = %s"
+    mycursor.execute(sql, (number,))
+    mydb.commit()
+
+# deletes a user entry given a name
+def deleteUserName(name):
+    sql = "DELETE FROM users WHERE name = %s"
+    mycursor.execute(sql, (name,))
+    mydb.commit()
+
+# returns an array containing all of the numbers in the users table
+def getNumberArr():
+    sql = "SELECT number FROM users"
+    mycursor.execute(sql)
+
+    myresult = mycursor.fetchall()
+    resultArr = []
+
+    # go through all results
+    for row in myresult:
+        # go through the tuple of the result (to de-tuple it) in O(1) runtime
+        for entry in row:
+            print(entry)
+            resultArr.append(entry)
+        
+    return resultArr
+
+# checks whether a user exists in the table already
+def checkForUser(number):
+	numbers = getNumberArr()
+
+	if number in numbers:
+		return True
+	else:
+		return False
+
+
+
+# deleteUserName("Adam")
+
+# deleteUser("+4086211865")
+
+# createNewUser("Adam", "+4086211865")
+# createNewUser("Archibald", "+582739123")
+
+getNumberArr()
+
+# addFoodToUser("Cheeken", "4086211865")
+
+# printUsersTable()
+
+
 # create table
 
 # mycursor.execute("CREATE TABLE users (name VARCHAR(255), number VARCHAR(255), diningHalls JSON, foods JSON)")
