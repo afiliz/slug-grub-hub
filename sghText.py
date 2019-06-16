@@ -29,7 +29,7 @@ def convertDHArrToNums(dhArr):
             dhResult.append(2)
         elif dh == "Porter/Kresge" or dh == "Por/Kres" or dh == "P/K" or dh == "Po/Kr":
             dhResult.append(3)
-        elif dh == "Carson/Oakes" or dh == "Ca/Oa" or dh == "Car/Oak" or dh == "Ca/O":
+        elif dh == "Carson/Oakes" or dh == "Ca/Oa" or dh == "Car/Oak" or dh == "Ca/O" or "Rachel Carson/Oakes":
             dhResult.append(4)
 
     return dhResult

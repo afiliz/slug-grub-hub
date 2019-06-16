@@ -27,33 +27,33 @@ def updateDates():
     plusSixDate = currentDate + datetime.timedelta(days = 6)
     plusSevenDate = currentDate + datetime.timedelta(days = 7)
 
-updateAllMeals()
+# updateAllMeals()
 
-# sendText(14086211865, "Test texterino")
+# # sendText(14086211865, "Test texterino")
 
-# for x in range(0, 8):
-#     print(x)
-# # getMeals(C9_C10_URLS[4], c9_c10_breakfast["current"], c9_c10_lunch["current"], c9_c10_dinner["current"], c9_c10_lateNight["current"])
+# # for x in range(0, 8):
+# #     print(x)
+# # # getMeals(C9_C10_URLS[4], c9_c10_breakfast["current"], c9_c10_lunch["current"], c9_c10_dinner["current"], c9_c10_lateNight["current"])
 
 
 
-print(c9_c10_breakfast["current"])
-print(c9_c10_lunch["current"])
-print(c9_c10_dinner["current"])
-print(c9_c10_lateNight["current"])
-print(C9_C10_URLS[0])
+# print(c9_c10_breakfast["current"])
+# print(c9_c10_lunch["current"])
+# print(c9_c10_dinner["current"])
+# print(c9_c10_lateNight["current"])
+# print(C9_C10_URLS[0])
 
-print(cow_stev_breakfast["current"])
-print(cow_stev_lunch["current"])
-print(cow_stev_dinner["current"])
-print(cow_stev_lateNight["current"])
-print(COW_STEV_URLS[0])
+# print(cow_stev_breakfast["current"])
+# print(cow_stev_lunch["current"])
+# print(cow_stev_dinner["current"])
+# print(cow_stev_lateNight["current"])
+# print(COW_STEV_URLS[0])
 
-print(port_kres_breakfast["current"])
-print(port_kres_lunch["current"])
-print(port_kres_dinner["current"])
-print(port_kres_lateNight["current"])
-print(PORT_KRES_URLS[0])
+# print(port_kres_breakfast["current"])
+# print(port_kres_lunch["current"])
+# print(port_kres_dinner["current"])
+# print(port_kres_lateNight["current"])
+# print(PORT_KRES_URLS[0])
 
 
 # receives texts and makes appropriate responses
@@ -76,11 +76,9 @@ def incoming_sms():
         sendText(phone, "Great to meet you " + body + "! Here's how to use Slug Grub Hub:")
         sendHelpMessage(phone)
 
-
     if not isUser:
         sendText(phone, "Thanks for using Slug Grub Hub! Please tell me what I should call you.")
         session['newUser'] = False
-
 
     # Determine the right reply for this message
     if body == 'hello':
@@ -112,5 +110,5 @@ if __name__ == "__main__":
 # print(URLS)
 
 
-# Special thanks to Mom for the "Hub" part of the Slug Grub Hub name (even though I realized Grub Hub was a thing after I created the repo)
+# Special thanks to my Mom for the "Hub" part of the Slug Grub Hub name (even though I realized Grub Hub was a thing after I created the repo)
 # Also special thanks to some of my friends for helping beta test Slug Grub Hub
