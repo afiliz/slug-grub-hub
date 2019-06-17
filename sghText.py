@@ -54,7 +54,8 @@ def sendAllDailyNotifications(numList):
         sendDailyNotificationToUser(num)
 
 def sendHelpMessage(number):
-    sendText(number, "Slug Grub Hub Functions:\n\n Add fav food: ADD FOOD {food1, food2,...}\nAdd fav dining hall: ADD DH {dh1, dh2,...}\nDisplay SGH Functions: HELP\n\nSlug Grub Hub will notify you daily at 9am and weekly on Sunday at 8pm.")
+    sendText(number, "Slug Grub Hub Functions:\n\n Add fav food: ADD FOOD [favorite food]\nAdd fav dining hall: ADD DH [dining hall]\nDisplay SGH Functions: HELP\n\nSlug Grub Hub will notify you daily at 9am and weekly on Sunday at 8pm.")
+    sendText(number, "Dining halls names are separated by a '/' and have two colleges (ex: 9/10, Cowell/Stevenson).")
 
 
 resultArr = getNumberArr()

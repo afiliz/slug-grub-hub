@@ -2,7 +2,7 @@ import datetime
 import os
 from sghData import *
 from sghText import sendHelpMessage
-from sghDB import checkForUser, createNewUser
+from sghDB import *
 from sghMeals import updateAllMeals, generateMealsCheckString
 from sghText import sendText
 from flask import Flask, request, redirect, session
@@ -55,6 +55,9 @@ def updateDates():
 # print(port_kres_lateNight["current"])
 # print(PORT_KRES_URLS[0])
 
+isInApp = False
+
+# TODO: May need to use resp.message() instead of sendText() here
 
 # receives texts and makes appropriate responses
 app = Flask(__name__)
@@ -71,21 +74,41 @@ def incoming_sms():
 
     isUser = checkForUser(phone)
 
-    if not session['newUser']:
-        createNewUser(body, phone)
-        sendText(phone, "Great to meet you " + body + "! Here's how to use Slug Grub Hub:")
-        sendHelpMessage(phone)
-
     if not isUser:
         sendText(phone, "Thanks for using Slug Grub Hub! Please tell me what I should call you.")
         session['newUser'] = False
 
+
+    if not session['newUser'] and isInApp == True:
+        createNewUser(body, phone)
+        sendText(phone, "Great to meet you " + body + "! Here's how to use Slug Grub Hub:")
+        sendHelpMessage(phone)
+
+    if isUser:
+        command = body.split(" ")
+        if command[1] == "DH" or command[1] == "dh":
+            command.pop(0)
+            command.pop(0)
+            newDH = ''.join(command)
+            addDHToUser(newDH, phone)
+            sendText(phone, "Added " + newDH + " to your favorite dining halls.")
+        if command[1] == "food" or command[1] == "Food" or command[1] == "FOOD":
+            command.pop(0)
+            command.pop(0)
+            newFood = ''.join(command)
+            addFoodToUser(newFood, phone)
+            sendText(phone, "Added " + newFood + " to your favorite foods.")
+
+    
+
     # Determine the right reply for this message
-    if body == 'hello':
-        print(phone)
-        resp.message("Hi!" + phone)
-    elif body == 'bye':
-        resp.message("Goodbye")
+    # if body == 'hello':
+    #     print(phone)
+    #     resp.message("Hi!" + phone)
+    # elif body == 'bye':
+    #     resp.message("Goodbye")
+
+    isInApp = True
 
     return str(resp)
 
