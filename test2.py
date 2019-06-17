@@ -1,12 +1,8 @@
-from sghMeals import turnTupleIntoString
-string1 = ""
-string2 = ""
-string3 = ""
-string4 = ""
+s = "Scrambled Eggs,Potatoes and Toast"
+ns = s.split(',')
 
-tup = ('BBQ Wings', 1, 'dinner')
-turnTupleIntoString(tup, string1, string2, string3, string4)
-print(string3)
+print(ns)
+
 # testString = "test\n"
 # testString += "testerino"
 
