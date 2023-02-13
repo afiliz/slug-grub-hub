@@ -6,6 +6,6 @@ This project serves as a learning experience for me in learning how to apply my 
 
 The end goal is for this project to help people who I know at UCSC. This will start with me having my close friends be users. After they try it out and give feedback, I will open Slug Grub Hub use to anyone who wants to use it.
 
-As of early October, UCSC has updated their dining hall website in a way that makes it harder to web scrape (returns an error 500 message when scraping). Slug Grub Hub is currently being updated to accomodate these changes, and will be fixed soon.
+As of early October 2018, UCSC has updated their dining hall website in a way that makes it harder to web scrape (returns an error 500 message when scraping). Slug Grub Hub is no longer maintained actively, but will exist as a public codebase reference for any students or developers who would like to do a similar project.
 
 Side Note: Slug Grub Hub has no association with the company Grub Hub. Originally SGH was supposed to just be "Slug Grub," but I had forgotten about Grub Hub's name. I believed adding the "Hub" part would make it sound better (I still believe this), and thus this project maintains the name of Slug Grub Hub.
